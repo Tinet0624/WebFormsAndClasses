@@ -15,7 +15,8 @@ body {
     font-size: 16px;
     color: #fff;
     margin-bottom: 5px;
-    background: #4e0030;  
+    background: #4e0030;
+    border-radius: 10px;  
 }
 
 /* Styling for options */
