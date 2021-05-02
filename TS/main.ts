@@ -1,16 +1,16 @@
 class ContactForm{
-    name:String;
-    email:String;
+    name:string;
+    email:string;
     phone:number;
     am:boolean;
     pm:boolean;
-    preferedContact:String;
+    preferedContact:string;
 }
 
 
 window.onload = function(){
-    let submitBtn = 
-        getById("submit-button");
+    //submit button
+    let submitBtn = getById("submit-button");
     submitBtn.onclick = submit;
 }
 
@@ -30,7 +30,33 @@ function isValid(){
 }
 
 function displayInput(userInput:ContactForm):void{
-    //TO DO display information in messagebox
+    let displayDiv = getById("myPopup");
+
+    let customerName  = document.createElement("p");
+    customerName.innerText = `Name: ${userInput.name}`;
+
+    let customerEmail  = document.createElement("p");
+    customerEmail.innerText = `Email: ${userInput.email}`;
+
+    let customerPhone  = document.createElement("p");
+    customerPhone.innerText = `Phone: ${userInput.phone}`;
+
+    //choice of am pm
+    let customerTime = document.createElement("p");
+    let time = "pm";
+    if(userInput.am){
+        time = "am";
+    }
+    customerTime.innerText = `Contact time: ${time}`;
+
+    let customerContact  = document.createElement("p");
+    customerContact.innerText = `Choice of contact: ${userInput.preferedContact}`;
+
+    displayDiv.appendChild(customerName);
+    displayDiv.appendChild(customerEmail);
+    displayDiv.appendChild(customerPhone);
+    displayDiv.appendChild(customerTime);
+    displayDiv.appendChild(customerContact);
 }
 
 /**
@@ -52,6 +78,11 @@ function getContactForm():ContactForm{
     console.log(info);
     return info;
 }
+
+function miniModel() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
 
 var getById = function(id:string){
     return (<HTMLInputElement>document.getElementById(id));
