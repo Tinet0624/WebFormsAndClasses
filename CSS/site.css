@@ -19,6 +19,19 @@ body {
     border-radius: 10px;  
 }
 
+/* style dropbox */
+.option-box select{
+    background-color: #4e0030;
+    color: white;
+    padding: 5px;
+    width: 190px;
+    border: none;
+    font-size: 16px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    appearance: button;
+    outline: none;
+}
+
 /* Styling for options */
 .option-box{
     width: 100%;
