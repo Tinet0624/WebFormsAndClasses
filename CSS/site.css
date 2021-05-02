@@ -242,7 +242,7 @@ input[type='radio']:checked:after {
 }
 
 /* display information popup */
-/* Popup container - can be anything you want */
+/* Popup container*/
 .popup {
     position: relative;
     display: inline-block;
