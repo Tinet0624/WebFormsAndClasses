@@ -5,10 +5,16 @@ window.onload = function () {
     submitBtn.onclick = submit;
 };
 function submit() {
-    console.log("Submit button was hit");
+    clearAll();
+    clearDisplay();
     if (isValid() == true) {
         let input = getContactForm();
         displayInput(input);
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+    else {
+        clearDisplay();
     }
 }
 function isValid() {
@@ -28,8 +34,8 @@ function isValid() {
         errorEmail.innerText = `An Email is required!`;
         errorSummary.appendChild(errorEmail);
     }
-    let phone = getInputById("phone").value;
-    if (phone == "") {
+    let phone = parseInt(getInputById("phone").value);
+    if (isNaN(phone)) {
         valid = false;
         let errorPhone = document.createElement("p");
         errorPhone.innerText = `An Phone Number is required!`;
@@ -86,9 +92,9 @@ function getContactForm() {
     console.log(info);
     return info;
 }
-function miniModel() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
+function clearDisplay() {
+    let displaySummary = getInputById("myPopup");
+    displaySummary.innerText = "";
 }
 function clearAll() {
     let errorSummary = getInputById("error-summary");

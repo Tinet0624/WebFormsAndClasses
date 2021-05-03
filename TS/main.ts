@@ -16,13 +16,19 @@ window.onload = function(){
 }
 
 function submit(){
-    console.log("Submit button was hit");
-    //clearAll();
+    clearAll();
+    clearDisplay();
     //check if valid
     if(isValid() == true){
         //get data
         let input:ContactForm = getContactForm();
         displayInput(input);
+        //popup
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+    else{
+        clearDisplay();
     }
 }
 
@@ -49,8 +55,8 @@ function isValid():boolean{
         errorSummary.appendChild(errorEmail);
     }
     
-    let phone = getInputById("phone").value;
-    if(phone == ""){
+    let phone = parseInt(getInputById("phone").value);
+    if(isNaN(phone)){
         valid = false;
 
         let errorPhone  = document.createElement("p");
@@ -130,9 +136,9 @@ function getContactForm():ContactForm{
     return info;
 }
 
-function miniModel() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
+function clearDisplay(){
+    let displaySummary = getInputById("myPopup");
+    displaySummary.innerText = "";
 }
 
 function clearAll(){
