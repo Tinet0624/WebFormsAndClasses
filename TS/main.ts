@@ -17,7 +17,7 @@ window.onload = function(){
 
 function submit(){
     console.log("Submit button was hit");
-    clearAll();
+    //clearAll();
     //check if valid
     if(isValid() == true){
         //get data
@@ -26,48 +26,57 @@ function submit(){
     }
 }
 
-
-
-//ADD VALIDATION CODE!!********************************************
 function isValid():boolean{
-    let isValid = true;
+
+    let valid = true;
+    let errorSummary = getInputById("error-summary");
 
     let name = getInputById("name").value;
     if(name == ""){
-        isValid = false;
-        let errorSummary = document.getElementById("error-summary-name");
-        errorSummary.innerText = "A Name is required!";
+        valid = false;
+
+        let errorName  = document.createElement("p");
+        errorName.innerText = `A Name is required!`;
+        errorSummary.appendChild(errorName);
     }
     
     let email = getInputById("email").value;
     if(email == ""){
-        isValid = false;
-        let errorSummary = document.getElementById("error-summary-email");
-        errorSummary.innerText = "A Email is required!";
-    }
+        valid = false;
 
+        let errorEmail  = document.createElement("p");
+        errorEmail.innerText = `An Email is required!`;
+        errorSummary.appendChild(errorEmail);
+    }
+    
     let phone = getInputById("phone").value;
     if(phone == ""){
-        isValid = false;
-        let errorSummary = document.getElementById("error-summary-phone");
-        errorSummary.innerText = "A Phone Number is required!";
+        valid = false;
+
+        let errorPhone  = document.createElement("p");
+        errorPhone.innerText = `An Phone Number is required!`;
+        errorSummary.appendChild(errorPhone);
     }
 
     let am = getInputById("time-am").checked;
     let pm = getInputById("time-pm").checked;
     if(am == false && pm == false){
-        isValid = false;
-        let errorSummary = document.getElementById("error-summary-time");
-        errorSummary.innerText = "Please Choose a time to be contacted!";
+        valid = false;
+
+        let errorTime  = document.createElement("p");
+        errorTime.innerText = `Pick Am or Pm!`;
+        errorSummary.appendChild(errorTime);
     }
 
-    let contact = getInputById("contact-type").value;
+    let contact = (<HTMLSelectElement>document.getElementById("contact-type")).value;
     if(contact == "Choose one"){
-        isValid = false;
-        let errorSummary = document.getElementById("error-summary-contact");
-        errorSummary.innerText = "Pick a preferred contact!";
+        valid = false;
+
+        let errorContact  = document.createElement("p");
+        errorContact.innerText = `Pick a Preferred Contact!`;
+        errorSummary.appendChild(errorContact);
     }
-    return isValid;
+    return valid;
 }
 
 function displayInput(userInput:ContactForm):void{
@@ -124,10 +133,10 @@ function getContactForm():ContactForm{
 function miniModel() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
-  }
+}
 
 function clearAll(){
-    let errorSummary = document.getElementById("error-summary").querySelectorAll("p");
+    let errorSummary = getInputById("error-summary");
     errorSummary.innerText = "";
 }
 
