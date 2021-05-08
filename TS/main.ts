@@ -4,9 +4,8 @@ class ContactForm{
     phone:number;
     am:boolean;
     pm:boolean;
-    preferedContact:string;
+    preferredContact:string;
 }
-
 
 window.onload = function(){
     //submit button
@@ -107,7 +106,7 @@ function displayInput(userInput:ContactForm):void{
     customerTime.innerText = `Contact time: ${time}`;
 
     let customerContact  = document.createElement("p");
-    customerContact.innerText = `Choice of contact: ${userInput.preferedContact}`;
+    customerContact.innerText = `Choice of contact: ${userInput.preferredContact}`;
 
     displayDiv.appendChild(customerName);
     displayDiv.appendChild(customerEmail);
@@ -129,7 +128,7 @@ function getContactForm():ContactForm{
     info.phone = parseInt(getInputById("phone").value);
     info.am = getInputById("time-am").checked;
     info.pm = getInputById("time-pm").checked;
-    info.preferedContact = 
+    info.preferredContact = 
         (<HTMLSelectElement>document.getElementById("contact-type")).value;
     // return information
     console.log(info);
